@@ -7,7 +7,6 @@ from random import *
 import matplotlib.pyplot as plt
 import numpy as np
 import time
-from exercice5 import perf_mix
 
 from exercice1 import gen_list_random_int
 
@@ -31,9 +30,61 @@ def sort_list(liste_a_trier:list)->list:
      
      return liste_croissant
 
+def perf_mix(fonction1:callable,fonction2:callable,liste_tailles:list,nbr_execs:int,config:int)->tuple:
+     """Fonction de mesure de comparaison durée d'execution entre deux fonctions.
+     Calcule la moyenne de temps d'execution pour chacune des tailles et en fait une liste (liste_moyennes)
+
+     Arguments:
+     fonction1      -- la première fonction dont on souhaite mesurer le temps d'execution
+     fonction2      -- la seconde fonction
+     liste_tailles  -- liste contanant les tailles des list[int] avec lesquelles on souhaite tester les fonctions
+     nbr_execs      -- nombre d'executions pour calculer la moyenne
+     
+     Retourne le couple (resultat_fonction1,resultat_fonction2) 
+     avec resultat_fonction sous la forme (liste_tailles,liste_moyennes)
+     """
+     
+     fonctions = [fonction1,fonction2]
+     retour_final = [None,None]     
+     numero_fonction = 0
 
 
-resultats = perf_mix(sort_list,sorted,[100,500,1000],100)
+
+     for fonction in fonctions:
+          liste_moyennes = []
+          somme_temps = 0
+          for taille in liste_tailles:
+
+               liste_random = gen_list_random_int(taille)
+               liste_triee = sorted(liste_random)
+
+               if config == 1:
+                    ma_liste = liste_random
+               
+               elif config == 2:
+                    ma_liste = liste_triee
+               
+               elif config == 3:
+                    liste_triee.reverse()
+                    ma_liste = liste_triee
+
+
+               for i in range(1,nbr_execs):
+                    temps_debut = time.perf_counter()
+                    fonction(ma_liste)
+                    temps_fin = time.perf_counter()
+
+                    temps_ecoule = temps_fin-temps_debut
+                    somme_temps+=temps_ecoule
+               liste_moyennes += [somme_temps/nbr_execs]
+               
+          retour_final[numero_fonction]=(liste_tailles,liste_moyennes)
+          numero_fonction+=1
+
+     return (retour_final[0],retour_final[1])
+
+
+resultats = perf_mix(sort_list,sorted,[100,500,1000],100,3)
 
 fig, ax = plt.subplots()
 
