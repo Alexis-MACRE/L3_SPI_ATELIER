@@ -23,11 +23,9 @@ def moyenne_temps_exec(fonction:callable,params:list,nbr_execs:int=10)->float:
           temps_ecoule = temps_fin-temps_debut
           somme_temps+=temps_ecoule
 
-     
-
      return somme_temps/nbr_execs
 
-mega_liste = gen_list_random_int(3000,0,80)
+mega_liste = gen_list_random_int(6000,0,80)
 
 print(moyenne_temps_exec(mix_list, mega_liste))
 print(moyenne_temps_exec(shuffle,mega_liste))
