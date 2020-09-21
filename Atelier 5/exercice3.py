@@ -1,3 +1,8 @@
+# Auteur(s) : MACRE Alexis
+# Date : 21/09/2020
+# Version : 1.0
+# Description : Atelier de programmation 5 Exo 3 Python
+
 from random import randint
 
 def choose_element_list(list_in_which_to_choose:list):

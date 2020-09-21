@@ -1,3 +1,8 @@
+# Auteur(s) : MACRE Alexis
+# Date : 21/09/2020
+# Version : 1.0
+# Description : Atelier de programmation 5 Exo 4 Python
+
 from random import randint
 from exercice2 import mix_list
 

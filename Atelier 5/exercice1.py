@@ -1,3 +1,8 @@
+# Auteur(s) : MACRE Alexis
+# Date : 21/09/2020
+# Version : 1.0
+# Description : Atelier de programmation 5 Exo 1 Python
+
 from random import randint
 
 def gen_list_random_int(int_nbr:int=10, int_binf:int=0, int_bsup:int=10)->list:

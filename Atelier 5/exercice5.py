@@ -1,3 +1,8 @@
+# Auteur(s) : MACRE Alexis
+# Date : 21/09/2020
+# Version : 1.0
+# Description : Atelier de programmation 5 Exo 5 Python
+
 from random import *
 import matplotlib.pyplot as plt
 import numpy as np
